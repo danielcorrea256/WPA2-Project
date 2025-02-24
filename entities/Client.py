@@ -274,7 +274,6 @@ if __name__ == "__main__":
 
     # Simulate receiving Message 3
     client.handle_message_3({"gtk": b"ExampleGTK", "r": 2})
-    client.send_message_4()
 
     # Proof-of-concept for encryption (not a real KRACK demonstration)
     m1 = np.frombuffer(b"holaaaa", dtype=np.uint8)
