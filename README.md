@@ -49,9 +49,13 @@ In this project, you will find implementations of key components used in WPA2, i
 wpa2-protocol/
 ├── README.md                # This file
 ├── client.py                # Client state machine implementation (supplicant)
-├── access_point.py          # Access Point (authenticator) state machine implementation
 ├── entities/
 │   └── Entity.py            # Base class with common cryptographic operations
+│   └── Client.py            # Client State Machine PTK simplified implementation
+│   └── AccessPoint.py       # Access Point simplified implementation
+├── entities/
+│   └── test_krackattack.py  # Tests the implementation of the Client is vulnerable to the krack attack
+│   └── test_pseudorandom.py # Tests the outputs of the pseudorandom function
 ├── pseudorandom.py          # Pseudorandom function implementation for key derivation
 └── requirements.txt         # Project dependencies (e.g., pycryptodome)
 ```
