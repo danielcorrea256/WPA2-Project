@@ -12,7 +12,7 @@ def hmac_sha1(key: bytes, message: bytes) -> bytes:
     return hmac.new(key, message, hashlib.sha1).digest()
 
 
-def prf(k : bytes, a : str, b : str, Len : int):
+def prf(k : bytes, a : bytes, b : bytes, Len : int):
     """
     Pseudo-random function (PRF) from the document.
 
@@ -26,8 +26,8 @@ def prf(k : bytes, a : str, b : str, Len : int):
     """
     R_list = []
     for i in range((Len + 159) // 160):
-        m = (a + b + str(i)).encode()
-        R_list.append(hmac_sha1(k, m))
+        i_byte = int.to_bytes(i)
+        R_list.append(hmac_sha1(k, a + b + i_byte))
 
     R = b"".join(R_list)
     bytes_requested = Len // 8
